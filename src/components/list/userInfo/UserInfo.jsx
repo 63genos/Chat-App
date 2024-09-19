@@ -8,9 +8,7 @@ const UserInfo = () =>{
                 <h3>Parth Bedarkar</h3>
             </div>
             <div className="icons">
-                <img src="./more.png" alt="" />
-                <img src="./video.png" alt="" />
-                <img src="./edit.png" alt="" />
+                <p><b>Logout</b></p>
             </div>
         </div>
     )

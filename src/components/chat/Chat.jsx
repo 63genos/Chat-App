@@ -29,6 +29,13 @@ const Chat = () => {
         };
     }, [emojiRef]);
 
+    const endRef = useRef(null)
+
+    useEffect(() => {
+        endRef.current?.scrollIntoView({behaviour:"smooth"})
+    }
+
+    )
     return (
         <div className='chat'>
             <div className="top">
@@ -48,6 +55,90 @@ const Chat = () => {
             <div className="center">
                 <div className="message own">
                     <div className="texts">
+                        <p>
+                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
+                        </p>
+                        <span>
+                            1 min ago
+                        </span>
+                    </div>
+                </div>
+                <div className="message">
+                    <img src="./avatar.png" alt="" />
+                    <div className="texts">
+                        <p>
+                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
+                        </p>
+                        <span>
+                            1 min ago
+                        </span>
+                    </div>
+                </div>
+                <div className="message own">
+                    <div className="texts">
+                        <p>
+                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
+                        </p>
+                        <span>
+                            1 min ago
+                        </span>
+                    </div>
+                </div>
+                <div className="message">
+                    <img src="./avatar.png" alt="" />
+                    <div className="texts">
+                        <p>
+                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
+                        </p>
+                        <span>
+                            1 min ago
+                        </span>
+                    </div>
+                </div>
+                <div className="message own">
+                    <div className="texts">
+                        <p>
+                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
+                        </p>
+                        <span>
+                            1 min ago
+                        </span>
+                    </div>
+                </div>
+                <div className="message">
+                    <img src="./avatar.png" alt="" />
+                    <div className="texts">
+                        <p>
+                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
+                        </p>
+                        <span>
+                            1 min ago
+                        </span>
+                    </div>
+                </div>
+                <div className="message own">
+                    <div className="texts">
+                        <p>
+                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
+                        </p>
+                        <span>
+                            1 min ago
+                        </span>
+                    </div>
+                </div>
+                <div className="message">
+                    <img src="./avatar.png" alt="" />
+                    <div className="texts">
+                        <p>
+                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
+                        </p>
+                        <span>
+                            1 min ago
+                        </span>
+                    </div>
+                </div>
+                <div className="message own">
+                    <div className="texts">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg" alt="" />
                         <p>
                             Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
@@ -57,80 +148,7 @@ const Chat = () => {
                         </span>
                     </div>
                 </div>
-                <div className="message">
-                    <img src="./avatar.png" alt="" />
-                    <div className="texts">
-                        <p>
-                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
-                        </p>
-                        <span>
-                            1 min ago
-                        </span>
-                    </div>
-                </div>
-                <div className="message own">
-                    <div className="texts">
-                        <p>
-                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
-                        </p>
-                        <span>
-                            1 min ago
-                        </span>
-                    </div>
-                </div>
-                <div className="message">
-                    <img src="./avatar.png" alt="" />
-                    <div className="texts">
-                        <p>
-                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
-                        </p>
-                        <span>
-                            1 min ago
-                        </span>
-                    </div>
-                </div>
-                <div className="message own">
-                    <div className="texts">
-                        <p>
-                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
-                        </p>
-                        <span>
-                            1 min ago
-                        </span>
-                    </div>
-                </div>
-                <div className="message">
-                    <img src="./avatar.png" alt="" />
-                    <div className="texts">
-                        <p>
-                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
-                        </p>
-                        <span>
-                            1 min ago
-                        </span>
-                    </div>
-                </div>
-                <div className="message own">
-                    <div className="texts">
-                        <p>
-                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
-                        </p>
-                        <span>
-                            1 min ago
-                        </span>
-                    </div>
-                </div>
-                <div className="message">
-                    <img src="./avatar.png" alt="" />
-                    <div className="texts">
-                        <p>
-                            Lekin sapno k piche batai rehna aur sakno ko lekar sote rehna achi baat nhi hai
-                        </p>
-                        <span>
-                            1 min ago
-                        </span>
-                    </div>
-                </div>
+                <div ref={endRef}></div>
             </div>
             <div className="bottom">
                 <div className="icons">

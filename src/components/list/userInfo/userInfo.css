@@ -21,10 +21,12 @@
         display: flex;
         gap: 20px;
 
-        img{
-         width: 20px;
-         height: 20px;
-         cursor: pointer;
+        p{
+            background-color: rgba(0, 0, 0, 0.534);
+            padding: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 10px;
         }
     }
 }
