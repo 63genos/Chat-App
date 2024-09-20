@@ -5,7 +5,7 @@ import List from "./components/list/List";
 import Login from "./components/login/Login";
 import Notification from "./components/notification/Notification";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "./lib/firebase"; // Import the Firestore db
+import { auth, db } from "./lib/firebase"; 
 import { useUserStore } from "./lib/userStore";
 import { useChatStore } from "./lib/chatStore";
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -17,15 +17,15 @@ const App = () => {
   const { chatId, changeChat } = useChatStore();
   const {groupId, changeGroupChat, groupName} = useGroupChatStore();
 
-  const [groupChats,  setGroupChats] = useState([]); // To store group chats
+  const [groupChats,  setGroupChats] = useState([]); 
 
-  // Fetch user and group chats on auth state change
+  
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
       fetchUserInfo(user?.uid);
 
       if (user) {
-        fetchUserGroups(user.uid); // Fetch the groups when the user logs in
+        fetchUserGroups(user.uid); 
       }
     });
 
@@ -34,7 +34,7 @@ const App = () => {
     };
   }, [fetchUserInfo]);
 
-  // Function to fetch groups where the user is a member
+  
   const fetchUserGroups = async (userId) => {
     try {
       const groupsRef = collection(db, "groups");
@@ -46,7 +46,7 @@ const App = () => {
         ...doc.data(),
       }));
 
-      setGroupChats(groups); // Store the fetched group chats
+      setGroupChats(groups); 
     } catch (err) {
       console.error("Error fetching groups:", err);
     }
@@ -59,11 +59,9 @@ const App = () => {
     <div className="container">
       {currentUser ? (
         <>
-        <List groupChats={groupChats} /> {/* Pass group chats to the List */}
-        {chatId && !groupId && <Chat />} {/* Only show Chat when chatId is present and groupId is not */}
-        {groupId && !chatId && <GroupChat groupId={groupId} groupName={groupName}/>} {/* Only show GroupChat when groupId is present and chatId is not */}
-        {/* Optionally render Detail if needed */}
-        {/* {chatId && <Detail />} */}
+        <List groupChats={groupChats} /> 
+        {chatId && !groupId && <Chat />} 
+        {groupId && !chatId && <GroupChat groupId={groupId} groupName={groupName}/>} 
       </>
       ) : (
         <Login />

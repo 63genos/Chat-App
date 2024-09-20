@@ -29,7 +29,7 @@ const Chat = () => {
     useChatStore();
 
   const endRef = useRef(null);
-  const emojiPickerRef = useRef(null); // Reference for emoji picker
+  const emojiPickerRef = useRef(null); 
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -45,11 +45,11 @@ const Chat = () => {
     };
   }, [chatId]);
 
-  // Handle closing emoji picker on outside click
+ 
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (emojiPickerRef.current && !emojiPickerRef.current.contains(e.target)) {
-        setOpen(false); // Close the emoji picker
+        setOpen(false); 
       }
     };
     
@@ -66,7 +66,7 @@ const Chat = () => {
 
   const handleEmoji = (e) => {
     setText((prev) => prev + e.emoji);
-    // Don't close the picker immediately after emoji selection
+   
   };
 
   const handleImg = (e) => {
@@ -146,7 +146,7 @@ const Chat = () => {
             user={user}
             currentUser={currentUser}
             isReceiverBlocked={isReceiverBlocked}
-            changeBlock={useChatStore().changeBlock} // Pass changeBlock function
+            changeBlock={useChatStore().changeBlock} 
             />
           </div>
       </div>

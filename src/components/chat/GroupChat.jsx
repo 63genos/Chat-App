@@ -17,7 +17,6 @@ const GroupChat = ({ groupId, groupName }) => {
 
   const { currentUser } = useUserStore();
 
-  // Fetch messages for the group
   useEffect(() => {
     if (!groupId) return;
 
@@ -35,54 +34,53 @@ const GroupChat = ({ groupId, groupName }) => {
     };
   }, [groupId]);
 
-  // Handle sending new messages
-  const sendMessage = async () => {
-    if (newMessage.trim() === '' && !img.file) {
-      console.log("Cannot send an empty message");
-      return;
+const sendMessage = async () => {
+  if (newMessage.trim() === '' && !img.file) {
+    console.log("Cannot send an empty message or image");
+    return;
+  }
+
+  const messagesRef = collection(db, 'groups', groupId, 'messages');
+  let imgUrl = null;
+
+  try {
+    
+    if (img.file) {
+      imgUrl = await upload(img.file); 
     }
 
-    const messagesRef = collection(db, 'groups', groupId, 'messages');
-    let imgUrl = null;
+   
+    await addDoc(messagesRef, {
+      text: newMessage || null, 
+      senderId: currentUser.id,
+      senderName: currentUser.username,
+      createdAt: serverTimestamp(),
+      ...(imgUrl && { img: imgUrl }), 
+    });
 
-    try {
-      // Upload the image if there is one
-      if (img.file) {
-        imgUrl = await upload(img.file); // Use your upload logic here
-      }
+    console.log("Message sent successfully");
 
-      // Send the message with or without the image
-      await addDoc(messagesRef, {
-        text: newMessage,
-        senderId: currentUser.id,
-        senderName: currentUser.username,
-        createdAt: serverTimestamp(),
-        ...(imgUrl && { img: imgUrl }), // Attach the image URL only if present
-      });
+    setNewMessage(''); 
+    setImg({ file: null, url: '' }); 
+  } catch (err) {
+    console.error("Error sending message:", err);
+  }
+};
 
-      console.log("Message sent successfully");
 
-      // Reset input fields after sending
-      setNewMessage(''); 
-      setImg({ file: null, url: '' }); 
-    } catch (err) {
-      console.error("Error sending message:", err);
-    }
-  };
-
-  // Handle image selection
+  
   const handleImg = (e) => {
     if (e.target.files[0]) {
       setImg({ file: e.target.files[0], url: URL.createObjectURL(e.target.files[0]) });
     }
   };
 
-  // Handle emoji selection
+  
   const handleEmoji = (e) => {
     setNewMessage((prev) => prev + e.emoji);
   };
 
-  // Handle clicking outside of the emoji picker
+  
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (emojiPickerRef.current && !emojiPickerRef.current.contains(e.target)) {
@@ -116,7 +114,7 @@ const GroupChat = ({ groupId, groupName }) => {
       </div>
 
       <div className="inputBox">
-        {/* Image upload */}
+        
         <label htmlFor="file">
           <img src="./img.png" alt="Upload" />
         </label>
@@ -127,7 +125,7 @@ const GroupChat = ({ groupId, groupName }) => {
           onChange={handleImg}
         />
 
-        {/* Text input */}
+        
         <input
           type="text"
           placeholder="Type a message..."
@@ -138,7 +136,7 @@ const GroupChat = ({ groupId, groupName }) => {
           }}
         />
 
-        {/* Emoji picker */}
+        
         <div className="emoji">
           <img src="./emoji.png" alt="Emoji Picker" onClick={() => setOpen((prev) => !prev)} />
           {open && (
@@ -148,7 +146,7 @@ const GroupChat = ({ groupId, groupName }) => {
           )}
         </div>
 
-        {/* Send button */}
+        
         <button onClick={sendMessage}>Send</button>
       </div>
     </div>

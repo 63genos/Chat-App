@@ -9,7 +9,7 @@ import { useGroupChatStore } from "../../../lib/groupChatStore";
 
 const ChatList = () => {
   const [chats, setChats] = useState([]);
-  const [groups, setGroups] = useState([]); // To store groups the user is part of
+  const [groups, setGroups] = useState([]); 
   const [addMode, setAddMode] = useState(false);
   const [input, setInput] = useState("");
 
@@ -17,7 +17,7 @@ const ChatList = () => {
   const { chatId, changeChat } = useChatStore();
   const { groupId, changeGroupChat} = useGroupChatStore();
 
-  // Fetch individual chats
+  
   useEffect(() => {
     const unSub = onSnapshot(
       doc(db, "userchats", currentUser.id),
@@ -44,12 +44,12 @@ const ChatList = () => {
     };
   }, [currentUser.id]);
 
-  // Fetch groups where the current user is a member
+ 
   useEffect(() => {
     const fetchGroups = async () => {
       const groupQuery = query(
         collection(db, "groups"),
-        where("members", "array-contains", currentUser.id) // Only fetch groups where the user is a member
+        where("members", "array-contains", currentUser.id) 
       );
 
       const groupSnap = await getDocs(groupQuery);
@@ -91,21 +91,21 @@ const ChatList = () => {
 
   const handleGroupSelect = async (group) => {
     console.log("handleGroupSelect");
-    // Check if a chat for this group already exists
+    
     const groupChatRef = doc(collection(db, "chats"));
     const groupChatSnap = await getDoc(groupChatRef);
   
     if (!groupChatSnap.exists()) {
-      // Create a new chat for the group if it doesn't exist
+      
       await setDoc(groupChatRef, {
         createdAt: serverTimestamp(),
-        members: Array.isArray(group.members) ? group.members : [], // Ensure it's an array
+        members: Array.isArray(group.members) ? group.members : [], 
         messages: [],
       });
     }
   
-    // Pass the group name along with groupId and members
-    changeGroupChat(group.groupId, group.name, Array.isArray(group.members) ? group.members : []); // Pass array
+    
+    changeGroupChat(group.groupId, group.name, Array.isArray(group.members) ? group.members : []); 
   };
   
 
@@ -137,7 +137,7 @@ const ChatList = () => {
         />
       </div>
 
-      {/* Display individual chats */}
+     
       {filteredChats.map((chat) => (
         <div
           className="item"
@@ -166,14 +166,14 @@ const ChatList = () => {
         </div>
       ))}
 
-      {/* Display groups */}
+      
       {filteredGroups.map((group) => (
         <div
           className="item"
           key={group.groupId}
           onClick={() => handleGroupSelect(group)}
           style={{
-            backgroundColor: "#6A67CE", // Customize background for groups if needed
+            backgroundColor: "#6A67CE", 
           }}
         >
           <img src="./avatar.png" alt="Group Avatar" />

@@ -4,12 +4,12 @@ import { useUserStore } from "./userStore";
 
 export const useGroupChatStore = create((set) => ({
   groupId: null,
-  groupName: '', // Add groupName property
+  groupName: '',
   groupMembers: [],
   isUserInGroup: false,
   
   changeGroupChat: (groupId, groupName, members) => {
-    // Reset chatId in chatStore if groupId is being set
+   
     if (groupId) {
       useChatStore.getState().resetChat();
     }
@@ -19,7 +19,7 @@ export const useGroupChatStore = create((set) => ({
 
     set({
       groupId,
-      groupName, // Set groupName
+      groupName, 
       groupMembers: members,
       isUserInGroup,
     });
@@ -28,7 +28,7 @@ export const useGroupChatStore = create((set) => ({
   resetGroupChat: () => {
     set({
       groupId: null,
-      groupName: '', // Reset groupName
+      groupName: '', 
       groupMembers: [],
       isUserInGroup: false,
     });
