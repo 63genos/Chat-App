@@ -1,0 +1,22 @@
+button {
+    padding: 0px;
+    background-color: rgba(230, 74, 105, 0.553);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(220, 20, 60, 0.796);
+    }
+
+    &.logout{
+
+      padding: 10px;
+      background-color: #1a73e8;
+
+      &:hover {
+        background-color: #1a73e8c0;
+      }
+    }
+  }

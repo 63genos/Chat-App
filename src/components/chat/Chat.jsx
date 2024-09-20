@@ -13,6 +13,7 @@ import { useChatStore } from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
 import upload from "../../lib/upload";
 import { format } from "timeago.js";
+import BlockUser from "../detail/BlockUser";
 
 const Chat = () => {
   const [chat, setChat] = useState([]);
@@ -140,11 +141,14 @@ const Chat = () => {
             <span>{user?.username}</span>
           </div>
         </div>
-        <div className="icons">
-          <img src="./phone.png" alt="" />
-          <img src="./video.png" alt="" />
-          <img src="./info.png" alt="" />
-        </div>
+        <div className="block">
+          <BlockUser
+            user={user}
+            currentUser={currentUser}
+            isReceiverBlocked={isReceiverBlocked}
+            changeBlock={useChatStore().changeBlock} // Pass changeBlock function
+            />
+          </div>
       </div>
       <div className="center">
         {chat?.messages?.map((message) => (

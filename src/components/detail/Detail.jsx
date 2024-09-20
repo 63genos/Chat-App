@@ -37,7 +37,6 @@ const Detail = () => {
         
       </div>
       <div className="info">
-        
         <div className="option">
           <div className="title">
             <span>Chat Settings</span>
@@ -50,23 +49,14 @@ const Detail = () => {
             <img src="./arrowUp.png" alt="" />
           </div>
         </div>
-        
         <div className="option">
           <div className="title">
             <span>Shared Files</span>
             <img src="./arrowUp.png" alt="" />
           </div>
         </div>
-        <button onClick={handleBlock}>
-          {isCurrentUserBlocked
-            ? "You are Blocked!"
-            : isReceiverBlocked
-            ? "User blocked"
-            : "Block User"}
-        </button>
-        <button className="logout" onClick={handleLogout}>
-          Logout
-        </button>
+        
+        
       </div>
     </div>
   );
