@@ -1,4 +1,4 @@
-
+## Greetings! I am Parth Bedarkar, currently pursuing my BTech in Materials Science and Metallurgical Engineering at IIT Hyderabad
 # ChatApp - Messaging Service Prototype
 
 ## Overview
