@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['emoji-picker-react'], // Add this line
+      external: [''], // Add this line
     },
   },
 })

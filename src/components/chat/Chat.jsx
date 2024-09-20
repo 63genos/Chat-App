@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./chat.css";
-import EmojiPicker from "emoji-picker-react";
+// import EmojiPicker from "emoji-picker-react";
 import {
   arrayUnion,
   doc,
@@ -199,7 +199,7 @@ const Chat = () => {
           onChange={(e) => setText(e.target.value)}
           disabled={isCurrentUserBlocked || isReceiverBlocked}
         />
-        <div className="emoji">
+        {/* <div className="emoji">
           <img
             src="./emoji.png"
             alt=""
@@ -210,7 +210,7 @@ const Chat = () => {
               <EmojiPicker onEmojiClick={handleEmoji} />
             </div>
           )}
-        </div>
+        </div> */}
         <button
           className="sendButton"
           onClick={handleSend}

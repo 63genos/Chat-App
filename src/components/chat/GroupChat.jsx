@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './chat.css'; 
-import EmojiPicker from 'emoji-picker-react';
+// import EmojiPicker from 'emoji-picker-react';
 import { collection, addDoc, onSnapshot, serverTimestamp, query, orderBy } from "firebase/firestore";
 import { db } from '../../lib/firebase';
 import { useUserStore } from "../../lib/userStore";
@@ -137,14 +137,14 @@ const sendMessage = async () => {
         />
 
         
-        <div className="emoji">
+        {/* <div className="emoji">
           <img src="./emoji.png" alt="Emoji Picker" onClick={() => setOpen((prev) => !prev)} />
           {open && (
             <div className="picker" ref={emojiPickerRef}>
               <EmojiPicker onEmojiClick={handleEmoji} />
             </div>
           )}
-        </div>
+        </div> */}
 
         
         <button onClick={sendMessage}>Send</button>
