@@ -1,6 +1,7 @@
 import "./userInfo.css"
 import { useUserStore } from "../../../lib/userStore";
 import Logout from "../../detail/Logout";
+import GroupChatButton from "./GroupChat";
 const Userinfo = () => {
 
   const { currentUser } = useUserStore();
@@ -11,6 +12,7 @@ const Userinfo = () => {
         <img src={currentUser.avatar || "./avatar.png"} alt="" />
         <h2>{currentUser.username}</h2>
       </div>
+      <GroupChatButton/>
       <Logout />
     </div>
   )

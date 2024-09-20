@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { useUserStore } from "./userStore";
+import { useGroupChatStore } from "./groupChatStore";
 
 export const useChatStore = create((set) => ({
   chatId: null,
@@ -8,6 +9,10 @@ export const useChatStore = create((set) => ({
   isReceiverBlocked: false,
   changeChat: (chatId, user) => {
     const currentUser = useUserStore.getState().currentUser;
+
+    if (chatId) {
+      useGroupChatStore.getState().resetGroupChat();
+    }
 
     // CHECK IF CURRENT USER IS BLOCKED
     if (user.blocked.includes(currentUser.id)) {
