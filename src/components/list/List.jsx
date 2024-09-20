@@ -1,13 +1,14 @@
 import ChatList from "./chatList/ChatList"
 import "./list.css"
-import UserInfo from "./userInfo/UserInfo"
+import Userinfo from "./userInfo/Userinfo"
 
-const List = () =>{
-    return(
-        <div className = 'list'>
-            <UserInfo/>
-            <ChatList/>
-        </div>
-    )
+const List = () => {
+  return (
+    <div className='list'>
+      <Userinfo/>
+      <ChatList/>
+    </div>
+  )
 }
+
 export default List

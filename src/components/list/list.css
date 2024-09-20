@@ -1,5 +1,11 @@
-.list{
-    flex:1;
-    display: flex;
-    flex-direction: column;
+.list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.center::-webkit-scrollbar {
+  width: 0px;  
+  height: 0px;
+  background: #dddddd35;
+  display: none;
 }
